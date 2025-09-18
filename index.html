@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Nathan Yount</title>
-  </head>
+	<head>
+		<title>Nathan Yount</title>
+	</head>
   <body>
 	<h1>Hello World</h1>
 	<p>
@@ -21,5 +21,28 @@
 		The words I write: <a href="https://www.instagram.com/natorade_thinks/">Instagram</a>
 		<br>The books I read: <a href="https://www.goodreads.com/user/show/32942607-nathan-yount">Goodreads</a>
 	</p>
+	
+	<section>
+		<h2>Recent Reads</h2>
+		<ul id="books-list"></ul>
+	</section>
+
+	<script>
+		(async function loadBooks(){
+		try {
+			const res = await fetch("https://api.nathanyount.com/books/recent");
+			const data = await res.json();
+			const ul = document.getElementById("books-list");
+			(data.items || []).forEach(it => {
+			  const li = document.createElement("li");
+			  li.innerHTML = `<a href="${it.link}" target="_blank" rel="noopener">${it.title}</a>`;
+			  ul.appendChild(li);
+		});
+		} catch (err) {
+			console.error(err);
+		}
+		})();
+	</script>
+	
   </body>
 </html>
