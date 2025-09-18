@@ -1,119 +1,87 @@
-<!DOCTYPE html>
-<html>
-	
-	<link rel="stylesheet" href="style.css">
-	
-	<head>
-		<title>Nathan Yount</title>
-	</head>
-  
-  <body>
-	
-	<h1>Hello World</h1>
-	<p>
-		You are what you consume. The books you read, the music you listen to, the movies you watch.
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nathan Yount</title>
+  <link rel="icon" href="https://s-media-cache-ak0.pinimg.com/originals/5c/1d/66/5c1d6622fff4c90e4baeceae1cfb423c.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Nathan Yount</h1>
+      <p class="muted">You are what you consume.</p>
+	  
+	  <p>
+		The books you read, the music you listen to, the movies you watch.
 		<br>The places you've lived, the people you've met, the conversations you've had.
 		<br>I have an obsession with identity: uniqueness, expression, formation.
 		<br>This page attempts to paint the picture of who I am through the mediums that speak to me.
-	</p>
-	
-	<h2>Music</h2>
-	<p>
+	  </p>
+	<br>
+	  <p>
 		The music I make: <a href="https://soundcloud.com/tehnatorade">Soundcloud</a>
 		<br>The music I listen to: <a href="https://open.spotify.com/playlist/52CfKNKuFMh7T9LYEiHsmw?si=98e70bd8a5b24aad">Spotify</a>
-	</p>
+	  </p>
 	
-	<h2>Literature</h2>
-	<p>
+	  <p>
 		The words I write: <a href="https://www.instagram.com/natorade_thinks/">Instagram</a>
 		<br>The books I read: <a href="https://www.goodreads.com/user/show/32942607-nathan-yount">Goodreads</a>
-	</p>
-	
-	
-	<br><br>--- In Development Below ---<br><br>
-	
-	
-	<!--
-	<section>
-		<h2>Recent Updates</h2>
-		<ul id="books-list"></ul>
-	</section>
+	  </p>
+    </header>
 
-	<script>
-		(async function loadBooks(){
-		try {
-			const res = await fetch("https://api.nathanyount.com/books/recent");
-			const data = await res.json();
-			const ul = document.getElementById("books-list");
-			(data.items || []).forEach(it => {
-			  const li = document.createElement("li");
-			  li.innerHTML = `<a href="${it.link}" target="_blank" rel="noopener">${it.title}</a>`;
-			  ul.appendChild(li);
-		});
-		} catch (err) {
-			console.error(err);
-		}
-		})();
-	</script>
-	-->
-	
-	<h2>Recent Reads</h2>
-	<table id="reads" border="1" cellpadding="6" cellspacing="0">
-	  <thead>
-		<tr>
-		  <th>Title</th>
-		  <th>Author</th>
-		  <th>Date Finished</th>
-		  <th>Rating</th>
-		  <th>Review</th>
-		</tr>
-	  </thead>
-	  <tbody></tbody>
-	</table>
-	
-	<script>
-		async function loadFinishedBooks() {
-		  const res = await fetch("https://api.nathanyount.com/books/finished");
-		  const data = await res.json();
-		  const tbody = document.querySelector("#reads tbody");
+    <section>
+      <h2>Recent Reads</h2>
+      <table id="reads">
+        <thead>
+          <tr>
+            <th>Title</th><th>Author</th><th>Date Finished</th><th>Rating</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
 
-		  // Show up to 10 most recent (adjust as you like)
-		  (data.items || []).slice(0, 10).forEach(b => {
-			const tr = document.createElement("tr");
+    <!-- Future sections fit in seamlessly -->
+    <section class="grid">
+      <div class="col-6">
+        <div class="card">
+          <h3>Music</h3>
+          <p class="muted">Spotify / SoundCloud widgets or lists go here.</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h3>Writing</h3>
+          <p class="muted">Instagram captions, notes, etc.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-			// Title links to Goodreads
-			const titleCell = `<td><a href="${b.link}" target="_blank" rel="noopener">${b.title || ""}</a></td>`;
-			const authorCell = `<td>${b.author || ""}</td>`;
+  <script>
+  // same BOOKS rendering you already have, just ensuring the stars class:
+  const API = "https://api.nathanyount.com/books/finished";
+  function stars5(n){ if(n===""||n==null) return ""; const f=Math.max(0,Math.min(5,parseInt(n,10))); return "★".repeat(f)+"☆".repeat(5-f); }
 
-			// Normalize date (feed might be YYYY/MM/DD); display as YYYY-MM-DD
-			const dateStr = (b.finished_at || "").replace(/\//g, "-");
-			const dateCell = `<td>${formatDate(b.finished_at)}</td>`;
-
-			// Stars from rating (1-5) or empty
-			const stars = b.rating ? "★".repeat(b.rating) + "☆".repeat(5 - b.rating) : "";
-			const ratingCell = `<td>${stars}</td>`;
-
-			// Shorten long reviews for the table
-			let review = (b.review || "").trim();
-			if (review.length > 220) review = review.slice(0, 220) + "…";
-			const reviewCell = `<td>${review}</td>`;
-
-			tr.innerHTML = titleCell + authorCell + dateCell + ratingCell + reviewCell;
-			tbody.appendChild(tr);
-		  });
-		}
-
-		loadFinishedBooks();
-		
-		function formatDate(str) {
-		  if (!str) return "";
-		  const d = new Date(str);
-		  if (!isNaN(d)) {
-			return d.toISOString().split("T")[0]; // YYYY-MM-DD
-		  }
-		  return str.replace(" 00:00:00 +0000", ""); // fallback
-		}
-	</script>
-	
-  </body>
+  (async function init(){
+    const res = await fetch(API);
+    const data = await res.json();
+    const items = data.items || [];
+    const tbody = document.querySelector("#reads tbody");
+    tbody.innerHTML = "";
+    items.slice(0,12).forEach(b=>{
+      const tr = document.createElement("tr");
+      const date = (b.finished_at||"").replace(/\//g,"-");
+      tr.innerHTML = `
+        <td><a href="${b.link}" target="_blank" rel="noopener">${b.title||""}</a></td>
+        <td>${b.author||""}</td>
+        <td>${date}</td>
+        <td class="stars">${stars5(b.rating)}</td>`;
+      tbody.appendChild(tr);
+    });
+  })();
+  </script>
+</body>
 </html>

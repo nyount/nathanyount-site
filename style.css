@@ -1,48 +1,149 @@
-/* Basic reset */
-body {
-  margin: 1;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #fafafa;
-  color: #222;
-  line-height: 1.5;
+/* =========
+   Design tokens
+   ========= */
+:root{
+  --bg: #fafafa;
+  --text: #222;
+  --muted: #667085;
+  --border: #e5e7eb;
+  --accent: #2563eb;       /* link & focus */
+  --accent-ink: #fff;
+  --card: #fff;
+  --table-stripe: #fafafa;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(16,24,40,.06), 0 1px 1px rgba(16,24,40,.04);
+  --maxw: 860px;
+  --space: 1rem;
+  --space-lg: 2rem;
 }
 
-/* Container for your main content */
-.container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+/* Optional automatic dark mode (respects OS setting) */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b0f16; --text:#e8eaed; --muted:#9aa0a6; --border:#1f2937;
+    --accent:#60a5fa; --accent-ink:#0b0f16; --card:#111827; --table-stripe:#0f1622;
+    --shadow:none;
+  }
 }
 
-/* Headings */
-h1, h2, h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
+/* =========
+   Global reset-ish
+   ========= */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
 }
 
-/* Book list items */
-.book {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+/* =========
+   Layout
+   ========= */
+.container{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: calc(var(--space)*1.5) var(--space);
 }
+
+section{ margin-block: var(--space-lg); }
+
+/* =========
+   Headings & text
+   ========= */
+h1,h2,h3{
+  margin: 0 0 .6rem;
+  line-height:1.2;
+}
+h1{ font-size: clamp(28px, 4vw, 40px); letter-spacing:-.02em; }
+h2{ font-size: clamp(20px, 3vw, 26px); margin-top: var(--space-lg); }
+p{ margin: .5rem 0; color:var(--text); }
+.muted{ color:var(--muted); }
+
+/* =========
+   Links & focus
+   ========= */
+a{
+  color:var(--accent);
+  text-decoration:none;
+}
+a:hover{ text-decoration:underline; }
+:focus-visible{
+  outline: 3px solid color-mix(in oklab, var(--accent) 60%, transparent);
+  outline-offset: 2px;
+}
+
+/* =========
+   Tables (for Goodreads list)
+   ========= */
+table{
+  width:100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow:hidden;         /* rounds table corners */
+  box-shadow: var(--shadow);
+}
+thead th{
+  text-align:left;
+  font-weight:600;
+  background: color-mix(in oklab, var(--card) 70%, var(--border));
+}
+th, td{
+  padding: .6rem .75rem;
+  border-bottom:1px solid var(--border);
+  vertical-align: top;
+}
+tbody tr:nth-child(even){ background: var(--table-stripe); }
+tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--card)); }
 
 /* Stars */
-.stars {
-  white-space: nowrap;    /* prevents line break */
-  font-size: 1.2rem;
-  color: goldenrod;       /* make them gold */
+.stars{ white-space:nowrap; color:#f5b301; } /* gold */
+@media (prefers-color-scheme: dark){ .stars{ color:#facc15; }}
+
+/* =========
+   Card & grid primitives (for future sections)
+   ========= */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding: var(--space);
+  box-shadow: var(--shadow);
+}
+.grid{
+  display:grid;
+  gap: var(--space);
+  grid-template-columns: repeat(12, 1fr);
+}
+.col-12{ grid-column: span 12; }
+.col-6{ grid-column: span 6; }
+.col-4{ grid-column: span 4; }
+@media (max-width: 720px){
+  .col-6,.col-4{ grid-column: span 12; }
 }
 
-/* Links */
-a {
-  color: #0077cc;
-  text-decoration: none;
+/* Buttons (for future controls) */
+.button{
+  display:inline-block;
+  padding:.55rem .9rem;
+  border-radius: calc(var(--radius) - 4px);
+  border:1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  text-decoration:none;
+  box-shadow: var(--shadow);
 }
-a:hover {
-  text-decoration: underline;
+.button.primary{
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: transparent;
 }
+.button:hover{ filter: brightness(1.03); }
+
+/* Small utilities */
+.center{ text-align:center; }
+.right{ text-align:right; }
+.spacious > * + *{ margin-top:.5rem; }
