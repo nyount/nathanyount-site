@@ -189,3 +189,32 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
 }
 
 .pull-quote cite{ font-style: normal; }
+
+/* Scrollable table with sticky header */
+.table-scroll {
+  max-height: 500px;
+  overflow-y: auto;                 /* the scroller */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* override the global table{ overflow:hidden; border-radius; box-shadow } */
+.table-scroll table {
+  width: 100%;
+  border-collapse: separate;        /* sticky works with 'separate' */
+  border-spacing: 0;
+  margin: 0;
+  border: none;
+  overflow: visible;                /* <-- critical: cancel global overflow:hidden */
+  border-radius: 0;                 /* wrapper handles rounding */
+  box-shadow: none;                 /* wrapper handles shadow */
+}
+
+/* make the header stick to the top of the scroller */
+.table-scroll thead th {
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  z-index: 2;
+  box-shadow: 0 1px 0 var(--border), 0 6px 12px rgba(0,0,0,.03);
+}
