@@ -32,7 +32,10 @@
 	  </p>-->
     </header>
 	
-	<!-- <br><p class="muted"><i>TBD: Misc. book quote.</i></p> -->
+	<figure class="pull-quote" id="quote-box">
+	  <blockquote id="quote-text"></blockquote>
+	  <figcaption id="quote-source"></figcaption>
+	</figure>
 	
     <section>
       <h2>Recent Reads</h2>
@@ -182,6 +185,474 @@
     });
   })();
   </script>
+  
+  <script>
+	const quotes = [
+	  {
+		text: "He had learned that dignity could not be acquired from accoutrements and accessories; it came unasked, it grew from one’s ability to endure.",
+		source: "— Rohinton Mistry, A Fine Balance"
+	  },
+	  {
+		text: "Please always remember the secret of survival is to embrace change and to adapt… You see, you cannot draw lines and compartments, and refuse to budge beyond them. Sometimes you have to use your failures as stepping-stones to success. You have to maintain a fine balance between hope and despair. In the end, it’s all a question of balance.",
+		source: "— Rohinton Mistry, A Fine Balance"
+	  },
+	  {
+		text: "Remembering bred its own peculiar sorrow. It seemed so unfair: that time should render both sadness and happiness into a source of pain.",
+		source: "— Rohinton Mistry, A Fine Balance"
+	  },
+	  {
+		text: "Time is the twine to tie our lives into parcels of years and months.",
+		source: "— Rohinton Mistry, A Fine Balance"
+	  },
+	  {
+		text: "Where humans were concerned, the only emotion that made sense was wonder at their ability to endure, and sorrow, for the hopelessness of it all.",
+		source: "— Rohinton Mistry, A Fine Balance"
+	  },
+	  {
+		text: "One day you must tell me your full and complete story, unabridged and unexpurgated… It’s extremely important because it helps to remind yourself of who you are. Then you can go forward, without fear of losing yourself in this ever-changing world.",
+		source: "— Rohinton Mistry, A Fine Balance"
+	  },
+	  {
+		text: "It is a good thing to learn the truth one’s self. To first believe with all your heart, and then not to believe, is good, too. It fattens the emotions and makes them stretch… In teaching your child, do not forget that suffering is good too. It makes a person rich in character.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "He was so vibrant, gay and jolly—so intoxicated with living—that he was like a god come from the clouds.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "There had to be the dark and muddy waters so that the sun could have something to background its flashing glory.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "From that time on, the world was hers for the reading. She would never be lonely again, never miss the lack of intimate friends. Books became her friends and there was one for every mood.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "There are very few bad people. There are just a lot of people that are unlucky.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "It doesn’t take long to write things of which you know nothing. When you write of actual things, it takes longer, because you have to live them first.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "But she didn’t want to recall things. She wanted to live things—or as a compromise, re-live rather than reminisce.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "Dear God, let me be something every minute of every hour of my life. Let me be gay; let me be sad. Let me be cold; let me be warm. Let me be hungry... have too much to eat. Let me be ragged or well dressed. Let me be sincere - be deceitful. Let me be truthful; let me be a liar. Let me be honorable and let me sin. Only let me be something every blessed minute.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "I wait for death with the courage I gained from living.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "The last time of anything has the poignancy of death itself. Oh, the last time how clearly you see everything; as though a magnifying light had been turned on it. And you grieve because you hadn’t held it tighter when you had it every day.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "To look at everything always as though you were seeing it either for the first or last time: this is your time on earth filled with glory.",
+		source: "— Betty Smith, A Tree Grows in Brooklyn"
+	  },
+	  {
+		text: "I was within and without, simultaneously enchanted and repelled by the inexhaustible variety of life.",
+		source: "— F. Scott Fitzgerald, The Great Gatsby"
+	  },
+	  {
+		text: "It is invariably saddening to look through new eyes at things upon which you have expended your own powers of adjustment.",
+		source: "— F. Scott Fitzgerald, The Great Gatsby"
+	  },
+	  {
+		text: "Life starts all over again when it gets crisp in the fall.",
+		source: "— F. Scott Fitzgerald, The Great Gatsby"
+	  },
+	  {
+		text: "I was thirty. Before me stretched the portentous, menacing road of a new decade.",
+		source: "— F. Scott Fitzgerald, The Great Gatsby"
+	  },
+	  {
+		text: "So we beat on, boats against the current, borne back ceaselessly into the past.",
+		source: "— F. Scott Fitzgerald, The Great Gatsby"
+	  },
+	  {
+		text: "There’s only one rule that I know of, babies—God damn it, you’ve got to be kind.",
+		source: "— Kurt Vonnegut, God Bless You, Mr. Rosewater"
+	  },
+	  {
+		text: "Pretend to be good always, and even God will be fooled.",
+		source: "— Kurt Vonnegut, God Bless You, Mr. Rosewater"
+	  },
+	  {
+		text: "Keep away from booze, remember who you are, and behave accordingly.",
+		source: "— Kurt Vonnegut, God Bless You, Mr. Rosewater"
+	  },
+	  {
+		text: "But every man is more than just himself: he also represents the unique, the very special and always significant and remarkable point at which the world’s phenomena intersect, only once in this way and never again.",
+		source: "— Hermann Hesse, Demian"
+	  },
+	  {
+		text: "It was the first fissure in the columns that had upheld my childhood, which every individual must destroy before he can become himself.",
+		source: "— Hermann Hesse, Demian"
+	  },
+	  {
+		text: "The adult who has learned to translate a part of his feelings into thoughts notices the absence of these thoughts in a child, and therefore comes to believe that the child lacks these experiences too. Yet rarely in my life have I felt and suffered as deeply as at that time.",
+		source: "— Hermann Hesse, Demian"
+	  },
+	  {
+		text: "Very many are caught forever in this impasse, and for the rest of their lives cling painfully to an irrevocable past, the dream of the lost paradise—which is the worst and most ruthless of dreams.",
+		source: "— Hermann Hesse, Demian"
+	  },
+	  {
+		text: "Only the ideas that we actually live are of any value.",
+		source: "— Hermann Hesse, Demian"
+	  },
+	  {
+		text: "I wanted only to try to live in accord with the promptings which came from my true self. Why was that so very difficult?",
+		source: "— Hermann Hesse, Demian"
+	  },
+	  {
+		text: "One never reaches home… But where paths that have affinity for each other intersect, the whole world looks like home for a time.",
+		source: "— Hermann Hesse, Demian"
+	  },
+	  {
+		text: "Children can feel but they cannot analyse their feelings; and if the analysis is partially affected in thought they know not how to express the result of the process in words.",
+		source: "— Charlotte Brontë, Jane Eyre"
+	  },
+	  {
+		text: "It is weak and silly to say you cannot bear what it is your fate to be required to bear.",
+		source: "— Charlotte Brontë, Jane Eyre"
+	  },
+	  {
+		text: "I remembered that the real world was wide, and that a varied field of hopes and fears, of sensations and excitements, awaited those who had courage to go forth into its expanse to seek real knowledge of life amidst its perils.",
+		source: "— Charlotte Brontë, Jane Eyre"
+	  },
+	  {
+		text: "It is a very strange sensation to inexperienced youth to feel itself quite alone in the world; cut adrift from every connection; uncertain whether the port to which it is bound can be reached, and prevented by many impediments from returning to that it has quitted.",
+		source: "— Charlotte Brontë, Jane Eyre"
+	  },
+	  {
+		text: "What good it would have done me at that time to have been tossed in the storms of an uncertain struggling life, and to have been taught by rough and bitter experience to long for the calm amidst which I now repined!",
+		source: "— Charlotte Brontë, Jane Eyre"
+	  },
+	  {
+		text: "You will come some day to a craggy pass of the channel, where the whole of life’s stream will be broken up into whirl and tumult, foam and noise: either you will be dashed to atoms on crag points, or lifted up and borne on by some master wave into a calmer current.",
+		source: "— Charlotte Brontë, Jane Eyre"
+	  },
+	  {
+		text: "There is no happiness like that of being loved by your fellow-creatures, and feeling that your presence is an addition to their comfort.",
+		source: "— Charlotte Brontë, Jane Eyre"
+	  },
+	  {
+		text: "Read sometimes for the story, Bobby. Don’t be like the book-snobs who won’t do that. Read sometimes for the words—for the language. Don’t be like the play-it-safers that won’t do that. But when you find a book that has both a good story and good words, treasure that book.",
+		source: "— Stephen King, Hearts in Atlantis"
+	  },
+	  {
+		text: "Adulthood is accretive by nature, a thing which arrives in ragged stages and uneven overlaps.”",
+		source: "— Stephen King, Hearts in Atlantis"
+	  },
+	  {
+		text: "He’d gotten used to feeling old; feeling young again—knowing he could feel young again—was a terrible disorienting shock.",
+		source: "— Stephen King, Hearts in Atlantis"
+	  },
+	  {
+		text: "You lost your innocence when you grew up, all right—everyone knew that, but did you have to lose your hope, as well?",
+		source: "— Stephen King, Hearts in Atlantis"
+	  },
+	  {
+		text: "People grow up, they grow up and leave the kids they were behind.",
+		source: "— Stephen King, Hearts in Atlantis"
+	  },
+	  {
+		text: "He looked upon himself as a crystal pool of clarity and on his life as a troubled glass of misunderstood virtue.",
+		source: "— John Steinbeck, Cannery Row"
+	  },
+	  {
+		text: "The things we admire in men, kindness and generosity, openness, honesty, understanding and feeling, are the concomitants of failure in our system. And those traits we detest, sharpness, greed, acquisitiveness, meanness, egotism and self-interest are the traits of success. And while men admire the quality of the first they love the produce of the second.",
+		source: "— John Steinbeck, Cannery Row"
+	  },
+	  {
+		text: "It is only the vividness of memory that keeps the dead alive forever; a writer’s job is to imagine everything so personally that the fiction is as vivid as our personal memories.",
+		source: "— John Irving, The World According to Garp"
+	  },
+	  {
+		text: "You want too much. Too much unqualified praise, or love—or something that’s unqualified, anyway. You want the world to say, ‘I love your writing. I love you’ and that’s too much to want. That’s really sick, in fact.",
+		source: "— John Irving, The World According to Garp"
+	  },
+	  {
+		text: "You only grow by coming to the end of something and by beginning something else.",
+		source: "— John Irving, The World According to Garp"
+	  },
+	  {
+		text: "The story was written less out of any real reaction to the viscera of life than it was written to relieve the anxieties of the writer.",
+		source: "— John Irving, The World According to Garp"
+	  },
+	  {
+		text: "And they were both developing a fearfulness that worried them. Here they were, thinking so anxiously about their lives as if they were truly old people.",
+		source: "— John Irving, The World According to Garp"
+	  },
+	  {
+		text: "It’s more like trying to keep everyone alive, forever. Even the ones who must die in the end. They’re the most important to keep alive.",
+		source: "— John Irving, The World According to Garp"
+	  },
+	  {
+		text: "Imagining something is better than remembering something.",
+		source: "— John Irving, The World According to Garp"
+	  },
+	  {
+		text: "The object of the artist is the creation of the beautiful. What the beautiful is is another question.",
+		source: "— James Joyce, A Portrait of the Artist as a Young Man"
+	  },
+	  {
+		text: "Is that the basis of friendship? Is it as reactive as that? Do we respond only to people who seem to find us interesting?",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Ambition is a path, not a destination, and it is essentially the same path for everybody… Unconsidered, merely indulged, ambition becomes a vice; it can turn a man into a machine that knows nothing but how to run. Considered, it can be something else — a pathway to the stars maybe.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "There is a hollow in my insides that later, when I have had time to think, I will probably fall into and drown.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Hard times are instructive and humbling.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "It seemed to me that nothing could do so much for a man as a good long jail sentence… Who could not, in a well-insulated but austerely padded cell, think all the high thoughts, read all the great books, perhaps even write one or two?",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Hard writing makes easy reading.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Order is indeed the dream of man, but chaos, which is only another word for dumb, blind, witless chance, is still the law of nature.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Youth hasn’t got anything to do with chronological age. It’s times of hope and happiness.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Could a painter capture in expression and posture the delight-touched-with-humility, the almost tearful gratitude and thankfulness, that ought to mark paradise regained?",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Fallen grandeur was always more instructive than pallid perfection.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "Living through what we had been given to live through, we had only bad luck or personal inadequacy to blame for our short-comings.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "If we could have foreseen the future during those good days in Madison where all this began, we might not have had the nerve to venture into it.",
+		source: "— Wallace Stegner, Crossing to Safety"
+	  },
+	  {
+		text: "When we are young, we think ourselves the first to have each feeling in the world.",
+		source: "— Madeline Miller, Circe"
+	  },
+	  {
+		text: "There was no honesty in regretting what had given me my life.",
+		source: "— Madeline Miller, Circe"
+	  },
+	  {
+		text: "His words were simple. They had no art to them, which of course was also art.",
+		source: "— Madeline Miller, Circe"
+	  },
+	  {
+		text: "How would the songs frame the scene?",
+		source: "— Madeline Miller, Circe"
+	  },
+	  {
+		text: "It is youth’s gift not to feel its debts.",
+		source: "— Madeline Miller, Circe"
+	  },
+	  {
+		text: "I don’t like work—no man does—but I like what is in the work — the chance to find yourself.",
+		source: "— Joseph Conrad, Heart of Darkness"
+	  },
+	  {
+		text: "It made me tingle with enthusiasm. This was the unbounded power of eloquence—of words—of burning noble words.",
+		source: "— Joseph Conrad, Heart of Darkness"
+	  },
+	  {
+		text: "Droll thing life is — that mysterious arrangement of merciless logic for a futile purpose. The most you can hope from it is some knowledge of yourself—that comes too late—a crop of unextinguishable regrets.",
+		source: "— Joseph Conrad, Heart of Darkness"
+	  },
+	  {
+		text: "All he would ever need, it was said, was the time and the freedom to find himself.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "In a minute Shep might even say, ‘How’s the job going, Frank?’ in dead earnest, just as if Frank hadn’t made it clear, time and again, that his job was the very least important part of his life, never to be mentioned except in irony.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "It’s got nothing to do with definite, measurable talents — it’s your very essence that’s being stifled here. It’s what you are that’s being denied and denied and denied in this kind of life.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "What I really felt didn’t have anything to do with being scared or not scared. I just felt this terrific sense of life.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "All at once it seemed that the high adventure of pretending to be something he was not had led him into a way of life he didn’t want and couldn’t stand.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "I watch you talking and I think: isn’t that amazing? He really does think that way; these words really do mean something to him.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "Why did everything always change, when all you wanted, all you had ever humbly asked of whatever God there might be, was that certain things be allowed to remain the same?",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "He had successfully righted the course of his life but he felt himself more than ever a victim of the world’s indifference. It didn’t seem fair.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "It looked… like a place where people lived — a place where the difficult, intricate process of living could sometimes give rise to incredible harmonies of happiness and sometimes to near-tragic disorder, as well as to ludicrous minor interludes… a place where it was possible for whole summers to be kind of crazy, where it was possible to feel lonely and confused in many ways and for things to look pretty bleak from time to time, but where everything, in the final analysis, was going to be all right.",
+		source: "— Richard Yates, Revolutionary Road"
+	  },
+	  {
+		text: "There is a basin in the mind where words float around on thought and thought on sound and sight. Then there is a depth of thought untouched by words and deeper still a gulf of formless feelings untouched by thought.",
+		source: "— Zora Neale Hurston, Their Eyes Were Watching God"
+	  },
+	  {
+		text: "She didn’t read books so she didn’t know that she was the world and the heavens boiled down to a drop.",
+		source: "— Zora Neale Hurston, Their Eyes Were Watching God"
+	  },
+	  {
+		text: "No hour is ever eternity, but it has its right to weep.",
+		source: "— Zora Neale Hurston, Their Eyes Were Watching God"
+	  },
+	  {
+		text: "Love is lak de sea. It’s uh movin’ thing, but still and all, it takes its shape from de shore it meets, and it’s different with every shore.",
+		source: "— Zora Neale Hurston, Their Eyes Were Watching God"
+	  },
+	  {
+		text: "If what matters in a person’s existence is to accept the inevitable consciously, to taste the good and bad to the full and to make for oneself a more individual, unaccidental and inward destiny alongside one’s external fate, then my life has been neither empty nor worthless.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "Even if, as it is deemed by the gods, fate has inexorably trod over my external existence as it does with everyone, my inner life has been of my own making. I deserve its sweetness and bitterness and accept full responsibility for it.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "I also partly realized at that time that true creativity isolates one and demands something that has to be subtracted from the enjoyment of life.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "How many of these urges could be attributed to genuine youthful abandon, and how many were a desire for forgetfulness, I cannot now decide, for I long ago completely outgrew these phases of exhibitionistic youthfulness. If I indulged in excesses, I have since atoned for them.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "I did not know whether this music was good, but I knew that it was my own music, born and experienced within me and never heard anywhere else before.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "He is an emotional man; he has great vigor but no goal. At every moment he would like to taste the whole world and whatever he has and whatever he does only constitutes an infinitesimal part of it.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "Younger people greet you with respect and you secretly feel that the best is still to come, as all young people do, until they see that the best already lies behind them.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "Youth ends when egotism does; maturity begins when one lives for others.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "Unexpectedly I looked back into the world and saw that I was not beaten and finished but that I was in the middle of it and belonged to it.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "Man’s life seems to me like a long, weary night that would be intolerable if there were not occasionally flashes of light, the sudden brightness of which is so comforting and wonderful that the moments of their appearance cancel out and justify the years of darkness.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "What people have in common with each other is much more and of greater importance than what each person has in his own nature, what makes him different from others.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "Passion is always a mystery and unaccountable, and unfortunately there is no doubt that life does not spare its purest children and often it is just the most deserving people who cannot help loving those who destroy them.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "Fate was not kind, life was capricious and terrible and there was no good or reason in nature. But there is good and reason in us, in human beings, with whom fortune plays, and we can be stronger than nature and fate, if only for a few hours.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "On growing old, one becomes more contented than in one’s youth, which I will not therefore revile, for in all my dreams I hear my youth like a wonderful song which now sounds more harmonious than it did in reality, and even sweeter.",
+		source: "— Hermann Hesse, Gertrude"
+	  },
+	  {
+		text: "And now a force was in hand how much more strong, and we hadn’t had time to develop the means to think; for man has to have feelings and then words before he can come close to thought and, in the past at least, that has taken a long time.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "For how can one know color in perpetual green, and what good is warmth without cold to give it sweetness?",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "In literary criticism the critic has no choice but to make over the victim of his attention into something the size and shape of himself.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "So much there is to see, but our morning eyes describe a different world than do our afternoon eyes, and surely our wearied evening eyes can report only a weary evening world.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "Perhaps we have overrated roots as a psychic need. Maybe the greater the urge, the deeper and more ancient is the need, the will, the hunger to be somewhere else.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "What I am mourning is perhaps not worth saving, but I regret its loss nevertheless.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "I remembered now that I had been told Wisconsin is a lovely state, but the telling had not prepared me. It was a magic day.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "Then it occurred to me that the delicate shades of feeling, of reaction, are the result of communication, and without such communication they tend to disappear.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "Only through imitation do we develop toward originality.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "The place of my origin had changed, and having gone away I had not changed with it.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "You can’t go home again because home has ceased to exist except in the mothballs of memory.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "It is strange and perhaps fortunate that when one’s time grows nearer one’s interest in it flags as death becomes a fact rather than a pageantry.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  },
+	  {
+		text: "It’s because I’ve stopped seeing. When that happens you think you’ll never see again.",
+		source: "— John Steinbeck, Travels with Charley in Search of America"
+	  }
+	];
+
+	// pick one at random
+	const choice = quotes[Math.floor(Math.random() * quotes.length)];
+
+	// inject into DOM
+	document.getElementById("quote-text").textContent = "“" + choice.text + "”";
+	document.getElementById("quote-source").textContent = choice.source;
+	</script>
 
 </body>
 </html>

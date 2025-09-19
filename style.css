@@ -162,3 +162,30 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
   flex: 0 0 auto;                    /* prevent wrapping */
   scroll-snap-align: start;
 }
+
+
+/* Pull quote (subtle variant) */
+.pull-quote{
+  margin: 1.5rem 0 2rem;
+  padding: .75rem 1rem;
+  border-left: 3px solid var(--border);
+  background: var(--card);
+   border-radius: var(--radius);
+}
+
+.pull-quote blockquote{
+  margin: 0;
+  font-style: italic;
+  font-size: .95rem;              /* smaller than body text */
+  color: var(--muted);            /* softer gray */
+  line-height: 1.6;
+}
+
+.pull-quote figcaption{
+  margin-top: .4rem;
+  font-size: .85rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+.pull-quote cite{ font-style: normal; }
