@@ -38,6 +38,11 @@ body{
   background:var(--bg);
 }
 
+body {
+  background: var(--bg) url("img/ely-v2.jpg") no-repeat center top fixed;
+  background-size: cover; /* scale to fill viewport */
+}
+
 /* =========
    Layout
    ========= */
@@ -217,4 +222,9 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
   background: var(--card);
   z-index: 2;
   box-shadow: 0 1px 0 var(--border), 0 6px 12px rgba(0,0,0,.03);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
 }
