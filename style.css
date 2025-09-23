@@ -228,3 +228,21 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
   display: flex;
   justify-content: center;
 }
+
+.ig-container {
+  max-height: 450px;   /* or whatever fits your layout */
+  overflow-y: auto;    /* makes it scrollable if it overflows */
+  /*border-radius: 8px;  /* optional, to match your cards */
+}
+
+/* same box for any media embed */
+.embed-box{
+  height: 460px;         /* pick your target height */
+  overflow: auto;        /* scroll if content is taller */
+  border-radius: 8px;    /* optional, looks nice under the card */
+}
+
+/* ensure these cards stretch to the same height in the grid */
+.grid{ align-items: stretch; }
+.grid > .col-6 > .card{ height: 100%; display: flex; flex-direction: column; }
+.grid > .col-6 > .card .embed-box{ margin-top: .5rem; }
