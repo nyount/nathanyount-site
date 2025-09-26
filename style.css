@@ -282,30 +282,38 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
   border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
-/* Map-local lightbox */
+/* Map-local lightbox overlay */
+#travel-wrap { position: relative; }
+
 #mapzoom{
   position: absolute;
-  inset: 0;                 /* fill #travel-wrap */
-  display: none;
+  inset: 0;
+  display: none;               /* open -> flex */
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,.8);
+  background: rgba(0,0,0,.85);
   border-radius: var(--radius);
-  z-index: 40;              /* above Leaflet popups/tiles */
+  z-index: 1000;               /* above Leaflet controls/panes */
   cursor: zoom-out;
   padding: 2vmin;
 }
-#mapzoom.open{ display:flex; }
 
-#mapzoom img {
+/* show overlay */
+#mapzoom.open{ display: flex; }
+
+/* make the image unquestionably visible and on top */
+#mapzoom img{
+  display: block;
   max-width: 98%;
   max-height: 98%;
   border-radius: 12px;
   box-shadow: 0 12px 32px rgba(0,0,0,.35);
-  opacity: 1 !important;   /* force visible */
+  opacity: 1 !important;
+  position: relative;
+  z-index: 2 !important;
 }
 
-/* Close button */
+/* close button */
 #mapzoom-close{
   position: absolute;
   top: 8px; right: 8px;
@@ -316,5 +324,7 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
   box-shadow: var(--shadow);
   cursor: pointer;
   font-size: 18px; line-height: 1;
+  z-index: 3;                  /* above image */
 }
+
 #mapzoom-close:hover{ filter: brightness(1.05); }

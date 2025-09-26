@@ -296,10 +296,18 @@
 	  const btn = document.getElementById('mapzoom-close');
 
 	  function openZoom(src){
-		if (!src) return;
-		img.src = src;
+		if (!src) { console.warn('mapzoom: no src'); return; }
+		try { src = new URL(src, location.href).toString(); } catch(_) {}
+		const overlay = document.getElementById('mapzoom');
+		const img = document.getElementById('mapzoom-img');
+
 		overlay.classList.add('open');
 		overlay.setAttribute('aria-hidden','false');
+
+		img.onload  = () => {/* ok */};
+		img.onerror = (e) => console.error('mapzoom: failed to load', src, e);
+		img.src = src;
+		
 		// pause map interactions while zoomed
 		if (window.MAP) {
 		  MAP.closePopup();
