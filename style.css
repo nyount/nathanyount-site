@@ -267,3 +267,17 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
 
 /* Make leaflet controls match your vibe a bit */
 .leaflet-control-zoom a { border-radius: 6px; }
+
+#lightbox {
+  position: fixed; inset: 0;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.85);
+  z-index: 9999;               /* above leaflet/popups */
+  cursor: zoom-out;
+  padding: 4vmin;              /* edge breathing room */
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+  max-width: 92vw; max-height: 92vh;
+  border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}

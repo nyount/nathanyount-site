@@ -238,12 +238,12 @@
 		const img = p.thumb || p.full || '';
 		const html = `
 		  <div class="popup">
-			${img ? `<img src="${img}" alt="${t.label}" loading="lazy">` : ''}
-			<div class="popup-meta">
-			  <strong>${t.label}</strong><br>
-			  <span class="muted">${t.when || ''}</span>
-			</div>
-			${p.caption ? `<p class="popup-cap">${p.caption}</p>` : ''}
+			<a href="${full}" data-lightbox>
+			  <img src="${img}" alt="${t.label}" loading="lazy">
+			</a>
+			<div class="popup-meta"><strong>${t.label}</strong><br><span class="muted">${t.when||''}</span></div>
+		  </div>
+			<!--${p.caption ? `<p class="popup-cap">${p.caption}</p>` : ''}-->
 		  </div>
 		`;
 		const m = L.marker([t.lat, t.lng]);
@@ -784,6 +784,36 @@
 	document.getElementById("quote-text").textContent = "“" + choice.text + "”";
 	document.getElementById("quote-source").textContent = choice.source;
 	</script>
+
+  <script>
+	(() => {
+	  const box = document.getElementById('lightbox');
+	  const img = box.querySelector('img');
+
+	  // Open on click of any link with data-lightbox
+	  document.addEventListener('click', (e) => {
+		const a = e.target.closest('a[data-lightbox]');
+		if (!a) return;
+		e.preventDefault();
+		img.src = a.href;
+		box.classList.add('open');
+		box.setAttribute('aria-hidden', 'false');
+	  });
+
+	  // Close on backdrop click or Esc
+	  const close = () => {
+		box.classList.remove('open');
+		box.setAttribute('aria-hidden', 'true');
+		img.src = '';
+	  };
+	  box.addEventListener('click', close);
+	  document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') close();
+	  });
+	})();
+  </script>
+  
+  <div id="lightbox" aria-hidden="true"><img alt=""></div>
 
 </body>
 </html>
