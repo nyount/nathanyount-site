@@ -1,8 +1,8 @@
 [
   {
-    "id": "ely-2024",
-    "label": "Ely",
-    "when": "Jan 2024",
+    "id": "ely-2025",
+    "label": "Ely, NV",
+    "when": "Jan 2025",
     "lat": 39.2533,
     "lng": -114.8742,
     "photos": [
@@ -14,8 +14,22 @@
     ]
   },
   {
+    "id": "boise-2024",
+    "label": "Boise, ID",
+    "when": "Sept 2024",
+    "lat": 43.6150,
+    "lng": -116.2023,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_6633.jpeg",
+        "full": "img/travel/IMG_6633.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
     "id": "slo-2014",
-    "label": "San Luis Obispo",
+    "label": "San Luis Obispo, CA",
     "when": "Aug 2014",
     "lat": 35.2828,
     "lng": -120.6596,
@@ -27,6 +41,4 @@
       }
     ]
   }
-
 ]
-
