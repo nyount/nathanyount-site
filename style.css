@@ -297,11 +297,12 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
 }
 #mapzoom.open{ display:flex; }
 
-#mapzoom img{
+#mapzoom img {
   max-width: 98%;
   max-height: 98%;
   border-radius: 12px;
   box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  opacity: 1 !important;   /* force visible */
 }
 
 /* Close button */
