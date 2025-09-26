@@ -200,6 +200,65 @@
       </div>
     </section>
 	
+	<section class="card">
+	  <h3>Travels & Photography</h3>
+	  <div id="travel-map"></div>
+	</section>
+
+	<!-- Leaflet + MarkerCluster from CDN -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+	<script>
+	(async function(){
+	  // 1) Init map
+	  const map = L.map('travel-map', { scrollWheelZoom: true, tap: true })
+				   .setView([39.5, -98.35], 4); // USA-ish start
+
+	  // 2) Tiles (OpenStreetMap)
+	  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 18,
+		attribution: '&copy; OpenStreetMap'
+	  }).addTo(map);
+
+	  // 3) Load trips
+	  const res = await fetch('data/travel.json');
+	  const trips = await res.json();
+
+	  // 4) Cluster group
+	  const cluster = L.markerClusterGroup({ showCoverageOnHover:false });
+	  cluster.addTo(map);
+
+	  // 5) Add markers
+	  trips.forEach(t => {
+		const p = t.photos?.[0] || {};
+		const img = p.thumb || p.full || '';
+		const html = `
+		  <div class="popup">
+			${img ? `<img src="${img}" alt="${t.label}" loading="lazy">` : ''}
+			<div class="popup-meta">
+			  <strong>${t.label}</strong><br>
+			  <span class="muted">${t.when || ''}</span>
+			</div>
+			${p.caption ? `<p class="popup-cap">${p.caption}</p>` : ''}
+		  </div>
+		`;
+		const m = L.marker([t.lat, t.lng]);
+		m.bindPopup(html, { maxWidth: 300 });
+		cluster.addLayer(m);
+	  });
+
+	  // 6) Fit bounds nicely
+	  if (trips.length) {
+		const b = L.latLngBounds(trips.map(t => [t.lat, t.lng]));
+		map.fitBounds(b, { padding: [40, 40] });
+	  }
+	})();
+	</script>
+	
 	<section class="grid">
       <div class="col-12">
         <div class="card">
