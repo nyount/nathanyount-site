@@ -9,7 +9,7 @@
       {
         "thumb": "img/travel/ely.jpg",
         "full": "img/travel/ely.jpg",
-        "caption": "Ely at sunset"
+        "caption": ""
       }
     ]
   },
@@ -21,11 +21,12 @@
     "lng": -120.6596,
     "photos": [
       {
-        "thumb": "img/travel/slo.jpg",
-        "full": "img/travel/slo.jpg",
-        "caption": "SLO at sunset"
+        "thumb": "img/travel/slo.JPG",
+        "full": "img/travel/slo.JPG",
+        "caption": ""
       }
     ]
   }
 
 ]
+
