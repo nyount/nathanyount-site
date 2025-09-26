@@ -281,3 +281,39 @@ tbody tr:hover{ background: color-mix(in oklab, var(--table-stripe) 60%, var(--c
   max-width: 92vw; max-height: 92vh;
   border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
+
+/* Map-local lightbox */
+#mapzoom{
+  position: absolute;
+  inset: 0;                 /* fill #travel-wrap */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.8);
+  border-radius: var(--radius);
+  z-index: 40;              /* above Leaflet popups/tiles */
+  cursor: zoom-out;
+  padding: 2vmin;
+}
+#mapzoom.open{ display:flex; }
+
+#mapzoom img{
+  max-width: 98%;
+  max-height: 98%;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+}
+
+/* Close button */
+#mapzoom-close{
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--card) 90%, transparent);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-size: 18px; line-height: 1;
+}
+#mapzoom-close:hover{ filter: brightness(1.05); }

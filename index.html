@@ -204,7 +204,16 @@
 	
 	<section class="card">
 	  <h3>Travels & Photography</h3>
-	  <div id="travel-map"></div>
+	  <!-- wrap makes it easy to overlay within this section only -->
+	  <div id="travel-wrap" style="position:relative;">
+		<div id="travel-map"></div>
+
+		<!-- overlay (hidden by default) -->
+		<div id="mapzoom" aria-hidden="true">
+		  <button id="mapzoom-close" aria-label="Close">✕</button>
+		  <img id="mapzoom-img" alt="">
+		</div>
+	  </div>
 	</section>
 
 	<!-- Leaflet + MarkerCluster from CDN -->
@@ -215,6 +224,7 @@
 	(async function(){
 	  // Init map
 	  const map = L.map('travel-map', { scrollWheelZoom:true }).setView([39.5,-98.35], 4);
+	  window.MAP = map;
 	  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 18, attribution: '&copy; OpenStreetMap'
 	  }).addTo(map);
@@ -252,7 +262,7 @@
 
 		let media = '';
 		if (thumb && full) {
-		  media = `<a href="${full}" data-lightbox><img src="${thumb}" alt="${t.label||''}" loading="lazy"></a>`;
+		  media = `<a href="${full}" data-mapzoom><img src="${thumb}" alt="${t.label||''}" loading="lazy"></a>`;
 		} else if (thumb) {
 		  media = `<img src="${thumb}" alt="${t.label||''}" loading="lazy">`;
 		}
@@ -274,6 +284,62 @@
 	  const coords = trips.filter(t => typeof t.lat === 'number' && typeof t.lng === 'number')
 						  .map(t => [t.lat, t.lng]);
 	  if (coords.length) map.fitBounds(L.latLngBounds(coords), { padding:[40,40] });
+	})();
+	</script>
+	
+	<script>
+	(function(){
+	  // Keep a reference to the Leaflet map if not already:
+	  // window.MAP = map;  (do this where you create the map)
+	  const overlay = document.getElementById('mapzoom');
+	  const img = document.getElementById('mapzoom-img');
+	  const btn = document.getElementById('mapzoom-close');
+
+	  function openZoom(src){
+		if (!src) return;
+		img.src = src;
+		overlay.classList.add('open');
+		overlay.setAttribute('aria-hidden','false');
+		// pause map interactions while zoomed
+		if (window.MAP) {
+		  MAP.closePopup();
+		  MAP.dragging.disable();
+		  MAP.scrollWheelZoom.disable();
+		  MAP.doubleClickZoom.disable();
+		  MAP.boxZoom.disable();
+		  MAP.keyboard.disable();
+		}
+	  }
+
+	  function closeZoom(){
+		overlay.classList.remove('open');
+		overlay.setAttribute('aria-hidden','true');
+		img.src = '';
+		// resume map controls
+		if (window.MAP) {
+		  MAP.dragging.enable();
+		  MAP.scrollWheelZoom.enable();
+		  MAP.doubleClickZoom.enable();
+		  MAP.boxZoom.enable();
+		  MAP.keyboard.enable();
+		}
+	  }
+
+	  // Intercept clicks on any <a data-mapzoom>
+	  document.addEventListener('click', (e)=>{
+		const a = e.target.closest('a[data-mapzoom]');
+		if (!a) return;
+		e.preventDefault();
+		openZoom(a.href);
+	  });
+
+	  // Close on click of backdrop or button or Esc
+	  overlay.addEventListener('click', (e)=>{
+		if (e.target === overlay || e.target === btn) closeZoom();
+	  });
+	  document.addEventListener('keydown', (e)=>{
+		if (e.key === 'Escape' && overlay.classList.contains('open')) closeZoom();
+	  });
 	})();
 	</script>
 	
@@ -853,5 +919,4 @@
   <div id="lightbox" aria-hidden="true"><img alt=""></div>
 
 </body>
-
 </html>
