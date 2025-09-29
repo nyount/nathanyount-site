@@ -42,6 +42,20 @@
     ]
   },
   {
+    "id": "chicago-2023",
+    "label": "Chicago, IL",
+    "when": "Oct 2022",
+    "lat": 41.8832,
+    "lng": -87.6324,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_7336.jpeg",
+        "full": "img/travel/IMG_7336.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
     "id": "nyc-2023",
     "label": "New York City, NY",
     "when": "Sept 2023",
@@ -84,6 +98,20 @@
     ]
   },
   {
+    "id": "portland-2019",
+    "label": "Portland, OR",
+    "when": "October 2019",
+    "lat": 45.5152,
+    "lng": -122.6784,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_9244.jpeg",
+        "full": "img/travel/IMG_9244.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
     "id": "slo-2014",
     "label": "San Luis Obispo, CA",
     "when": "Aug 2014",
@@ -98,4 +126,3 @@
     ]
   }
 ]
-
