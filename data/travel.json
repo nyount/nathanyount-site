@@ -44,7 +44,7 @@
   {
     "id": "chicago-2023",
     "label": "Chicago, IL",
-    "when": "Oct 2022",
+    "when": "Oct 2023",
     "lat": 41.8832,
     "lng": -87.6324,
     "photos": [
@@ -98,15 +98,57 @@
     ]
   },
   {
+    "id": "boise-2019",
+    "label": "Boise, ID",
+    "when": "Oct 2019",
+    "lat": 43.6150,
+    "lng": -116.2023,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_9461.jpeg",
+        "full": "img/travel/IMG_9461.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
     "id": "portland-2019",
     "label": "Portland, OR",
-    "when": "October 2019",
+    "when": "Oct 2019",
     "lat": 45.5152,
     "lng": -122.6784,
     "photos": [
       {
         "thumb": "img/travel/IMG_9244.jpeg",
         "full": "img/travel/IMG_9244.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "madison-2018",
+    "label": "Madison, WI",
+    "when": "Sept 2018",
+    "lat": 43.0722,
+    "lng": -89.4008,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_4832.jpeg",
+        "full": "img/travel/IMG_4832.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "madison-2016",
+    "label": "Madison, WI",
+    "when": "July 2016",
+    "lat": 43.0722,
+    "lng": -89.4008,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_0411.jpeg",
+        "full": "img/travel/IMG_0411.jpeg",
         "caption": ""
       }
     ]
