@@ -1,5 +1,19 @@
 [
   {
+    "id": "rockford-2025",
+    "label": "Rockford, IL",
+    "when": "May 2025",
+    "lat": 42.2677,
+    "lng": -89.0878,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_3754.jpg",
+        "full": "img/travel/IMG_3754.jpg",
+        "caption": ""
+      }
+    ]
+  },
+  {
     "id": "ely-2025",
     "label": "Ely, NV",
     "when": "Jan 2025",
@@ -23,6 +37,48 @@
       {
         "thumb": "img/travel/IMG_6633.jpeg",
         "full": "img/travel/IMG_6633.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "nyc-2023",
+    "label": "New York City, NY",
+    "when": "Sept 2023",
+    "lat": 40.7128,
+    "lng": -74.0060,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_7175.jpeg",
+        "full": "img/travel/IMG_7175.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "venice-2023",
+    "label": "Venice, CA",
+    "when": "Jan 2023",
+    "lat": 33.9941,
+    "lng": -118.4527,
+    "photos": [
+      {
+        "thumb": "img/travel/FullSizeRender.jpeg",
+        "full": "img/travel/FullSizeRender.jpeg",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "muir-woods-2022",
+    "label": "Muir Woods, CA",
+    "when": "May 2022",
+    "lat": 37.8970,
+    "lng": -122.5811,
+    "photos": [
+      {
+        "thumb": "img/travel/IMG_1425.jpeg",
+        "full": "img/travel/IMG_1425.jpeg",
         "caption": ""
       }
     ]
